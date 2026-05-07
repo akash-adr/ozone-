@@ -70,4 +70,97 @@ document.addEventListener('DOMContentLoaded', () => {
     }, observerOptions);
     
     fadeElements.forEach(el => observer.observe(el));
+
+    // 4. Hero Carousel
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.carousel-indicators .dot');
+    const prevBtn = document.getElementById('carouselPrev');
+    const nextBtn = document.getElementById('carouselNext');
+    const carouselTrack = document.getElementById('heroCarousel');
+    
+    if (slides.length > 0) {
+        let currentSlide = 0;
+        const totalSlides = slides.length;
+        let slideInterval;
+        
+        const updateCarousel = (newIndex) => {
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+            
+            currentSlide = newIndex;
+            
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        };
+        
+        const nextSlide = () => {
+            let newIndex = (currentSlide + 1) % totalSlides;
+            updateCarousel(newIndex);
+        };
+        
+        const prevSlide = () => {
+            let newIndex = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateCarousel(newIndex);
+        };
+        
+        const startSlideShow = () => {
+            slideInterval = setInterval(nextSlide, 2500);
+        };
+        
+        const resetSlideShow = () => {
+            clearInterval(slideInterval);
+            startSlideShow();
+        };
+        
+        if (nextBtn && prevBtn) {
+            nextBtn.addEventListener('click', () => {
+                nextSlide();
+                resetSlideShow();
+            });
+            prevBtn.addEventListener('click', () => {
+                prevSlide();
+                resetSlideShow();
+            });
+        }
+        
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                updateCarousel(index);
+                resetSlideShow();
+            });
+        });
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                prevSlide();
+                resetSlideShow();
+            } else if (e.key === 'ArrowRight') {
+                nextSlide();
+                resetSlideShow();
+            }
+        });
+        
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        if (carouselTrack) {
+            carouselTrack.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+            
+            carouselTrack.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                if (touchEndX < touchStartX - 50) {
+                    nextSlide();
+                    resetSlideShow();
+                }
+                if (touchEndX > touchStartX + 50) {
+                    prevSlide();
+                    resetSlideShow();
+                }
+            }, { passive: true });
+        }
+        
+        startSlideShow();
+    }
 });
