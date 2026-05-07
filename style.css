@@ -250,7 +250,8 @@ a {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding-top: 80px;
+  padding-top: 100px;
+  padding-bottom: 60px;
   background: var(--blue-gradient);
   color: var(--white);
   overflow: hidden;
@@ -973,12 +974,25 @@ body.no-scroll {
 }
 
 @media (max-width: 992px) {
+  .hero {
+    padding-top: 140px;
+    padding-bottom: 100px;
+  }
+  
   .hero-container, .about-grid, .contact-grid {
     grid-template-columns: 1fr;
   }
   
   .hero-title {
-    font-size: 3rem;
+    font-size: 2.8rem;
+    line-height: 1.2;
+    margin-bottom: 1.2rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
   }
   
   .footer-grid {
@@ -988,9 +1002,19 @@ body.no-scroll {
   .visual-wrapper {
     margin-top: 2rem;
   }
+  
+  .carousel-container {
+    aspect-ratio: 21 / 9;
+    max-height: 450px;
+  }
 }
 
 @media (max-width: 767px) {
+  .hero {
+    padding-top: 130px;
+    padding-bottom: 80px;
+  }
+  
   .nav-menu {
     width: 100%;
     max-width: none;
@@ -998,7 +1022,61 @@ body.no-scroll {
   }
   
   .hero-title {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
+    line-height: 1.25;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+  
+  .hero-hooks {
+    margin-bottom: 2rem;
+  }
+  
+  .hero-hooks li {
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .visual-wrapper {
+    margin-top: 1.5rem;
+  }
+  
+  .carousel-container {
+    aspect-ratio: 2 / 1;
+    max-height: 250px;
+  }
+  
+  .carousel-btn {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .carousel-btn.prev {
+    left: 10px;
+  }
+  
+  .carousel-btn.next {
+    right: 10px;
+  }
+  
+  .carousel-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .carousel-indicators {
+    bottom: 8px;
+    gap: 6px;
+  }
+  
+  .carousel-indicators .dot {
+    width: 6px;
+    height: 6px;
   }
   
   .section-title {
