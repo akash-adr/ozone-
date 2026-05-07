@@ -1012,3 +1012,131 @@ body.no-scroll {
     padding: 2rem;
   }
 }
+
+/* Service Detail Pages */
+.page-hero {
+  position: relative;
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  padding-top: 80px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: var(--white);
+  text-align: center;
+  overflow: hidden;
+}
+
+.page-hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to right, rgba(5,21,53,0.9), rgba(5,21,53,0.7));
+  z-index: 1;
+}
+
+.page-hero-container {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.page-hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.page-hero-subtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin-bottom: 1.5rem;
+}
+
+.breadcrumb {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  opacity: 0.8;
+}
+
+.breadcrumb a {
+  color: var(--white);
+  transition: var(--transition-fast);
+}
+
+.breadcrumb a:hover {
+  color: var(--bright-red);
+}
+
+.service-content-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.feature-box {
+  background: var(--white);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--soft-shadow);
+  border-top: 4px solid var(--bright-red);
+  transition: var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+}
+
+.feature-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.feature-box h4 {
+  font-size: 1.2rem;
+  color: var(--deep-blue);
+  margin-bottom: 0.8rem;
+}
+
+.feature-box p {
+  color: #555;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.feature-box ul {
+  list-style: none;
+  margin-top: 0.5rem;
+  color: #555;
+  text-align: left;
+}
+
+.feature-box ul li {
+  margin-bottom: 0.5rem;
+  position: relative;
+  padding-left: 20px;
+  font-size: 0.95rem;
+}
+
+.feature-box ul li::before {
+  content: '•';
+  color: var(--bright-red);
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+@media (max-width: 767px) {
+  .page-hero-title {
+    font-size: 2.5rem;
+  }
+}
+
